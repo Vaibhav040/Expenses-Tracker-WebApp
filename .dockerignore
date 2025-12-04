@@ -1,0 +1,4 @@
+# file to ignore when makjn a build
+
+mysql-data/
+
