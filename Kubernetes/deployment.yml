@@ -25,39 +25,39 @@ spec:
       labels:
         app: expense
 
-  spec:        
-    containers:
-      - name: Expense-App
-        image: registry.gitlab.com/vaibhavc54/Expenses-Tracker-WebApp:${IMAGE_TAG} 
-        ports:
-        - containerPort: 8080
-        env:
-          - name: DB_HOST
-            value: mysql
-          - name: DB_PORT
-            value: "3306"
-          - name: SPRING_DATASOURCE_URL
-            value: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
-          - name: SPRING_DATASOURCE_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: expense-secret
-                value: SPRING_DATASOURCE_USERNAME
-          - name: SPRING_DATASOURCE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: expense-secret
-                value: SPRING_DATASOURCE_PASSWORD
+    spec:        
+      containers:
+        - name: Expense-App
+          image: registry.gitlab.com/vaibhavc54/Expenses-Tracker-WebApp:${IMAGE_TAG} 
+          ports:
+          - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: mysql
+            - name: DB_PORT
+              value: "3306"
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: expense-secret
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: expense-secret
+                  key: SPRING_DATASOURCE_PASSWORD
 
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "256Mi"
-          limits:
-            cpu: "500"
-            memory: "512Gi"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500"
+              memory: "512Gi"
 
-    imagePullSecrets:
-    - name: gitlab-creds
+      imagePullSecrets:
+      - name: gitlab-creds
 
 

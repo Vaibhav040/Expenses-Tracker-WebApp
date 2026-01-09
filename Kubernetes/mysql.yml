@@ -24,7 +24,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: expense-secret
-                  value: MYSQL_ROOT_PASSWORD
+                  key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
               value: expenses_tracker
 
