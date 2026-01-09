@@ -18,12 +18,12 @@ spec:
         - name: mysql
           image: mysql:8.0
           ports:
-            containerPorts: 3306
+            containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: expence-secret
+                  name: expense-secret
                   value: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
               value: expenses_tracker
