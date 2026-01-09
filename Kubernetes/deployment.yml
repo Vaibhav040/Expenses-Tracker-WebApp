@@ -28,7 +28,7 @@ spec:
     spec:        
       containers:
         - name: expense-webapp
-          image: registry.gitlab.com/vaibhavc54/Expenses-Tracker-WebApp:${IMAGE_TAG} 
+          image: registry.gitlab.com/vaibhavc54/expenses-tracker-webapp:${IMAGE_TAG} 
           ports:
           - containerPort: 8080
           env:
