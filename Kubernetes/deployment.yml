@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Expense-deployment
+  name: expense-deployment
   namespace: expense-app
 
 spec:
@@ -10,7 +10,7 @@ spec:
   revisionHistoryLimit: 5
 
   strategy:
-    type: RollingUpdates
+    type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
@@ -27,7 +27,7 @@ spec:
 
     spec:        
       containers:
-        - name: Expense-App
+        - name: expense-App
           image: registry.gitlab.com/vaibhavc54/Expenses-Tracker-WebApp:${IMAGE_TAG} 
           ports:
           - containerPort: 8080
