@@ -25,9 +25,9 @@ Deploy:
     - sed -i "s|\${IMAGE_TAG}|$CI_COMMIT_SHORT_SHA|g" Kubernetes/*.yml
     - kubectl apply -f Kubernetes/
     - |
-      if ! kubectl rollout status deployment Expense-deployment -n expense-app; then
+      if ! kubectl rollout status deployment expense-deployment -n expense-app --timeout=120s; then
         echo "---- Rollout failed, rolling back ---- "
-        kubectl rollout undo deployment Expense-deployment -n expense-app
+        kubectl rollout undo deployment expense-deployment -n expense-app
         exit 1
       fi
   tags:
