@@ -21,10 +21,7 @@ spec:
           - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: expense-secret
-                  key: MYSQL_ROOT_PASSWORD
+              value: Test@123
             - name: MYSQL_DATABASE
               value: "expenses_tracker"
 
